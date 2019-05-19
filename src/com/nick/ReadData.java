@@ -8,8 +8,6 @@ import org.w3c.dom.NodeList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
 
 public final class ReadData {
 
@@ -17,6 +15,14 @@ public final class ReadData {
 
     public static String[] readFile(File file) {
         try {
+            /**
+             * Setting up the classes used
+             * to parse the encrypted files
+             * that are saved in XML format
+             * (It was easier to store and read
+             * back the data after encrypting when
+             * saved in XML format)
+             */
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             Document doc = db.parse(file);
