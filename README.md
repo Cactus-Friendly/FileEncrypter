@@ -4,6 +4,6 @@ A simple little program that encrypts and decrypts files.
 
 Java version 11.0.2
 
-```shell
+```bash
 java -jar FileEncrypter.jar (File to encrypt)
 ```
