@@ -49,8 +49,8 @@ public final class Encryptor {
         estring[1] = "" + blockSize;
 
         //turning the array of BigIntegers into an array of Strings
-        for (int i = 2; i < encryptedBlocks.size(); i++) {
-            estring[i] = encryptedBlocks.get(i).toString();
+        for (int i = 0; i < encryptedBlocks.size(); i++) {
+            estring[i+2] = encryptedBlocks.get(i).toString();
         }
 
         return estring;

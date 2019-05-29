@@ -2,7 +2,6 @@ package com.nick;
 
 import java.io.*;
 import java.math.BigInteger;
-import java.nio.charset.Charset;
 
 public class Main {
 
@@ -17,15 +16,15 @@ public class Main {
 
         File file = new File(args[0]);
 
-        byte[] data = new byte[(int) file.length()];
+        byte[] in = new byte[(int) file.length()];
 
         try (InputStream is = new FileInputStream(file)) {
 
-            is.read(data);
+            is.read(in);
 
         } catch (IOException ex) { ex.printStackTrace(); }
 
-        BigInteger bi = new BigInteger(data);
+        BigInteger bi = new BigInteger(in);
 
         String text = bi.toString();
 
@@ -35,13 +34,13 @@ public class Main {
 
         SaveData.writeFile(file, estring);
 
-        String[] in = ReadData.readFile(file);
+        String[] data = ReadData.readFile(file);
 
-        String dstring = Decryptor.decryptMessage(in, keys[1]);
+        String dstring = Decryptor.decryptMessage(data, keys[1]);
 
         try (OutputStream os = new FileOutputStream("new " + args[0])) {
-            bi = new BigInteger(dstring);
-            byte[] out = bi.toByteArray();
+            BigInteger temp = new BigInteger(dstring + "");
+            byte[] out = temp.toByteArray();
             os.write(out);
         } catch (Exception ex) { ex.printStackTrace(); }
 
